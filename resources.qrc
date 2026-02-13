@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>AUTHORS</file>
+        <file>COPYING</file>
+	<file>ft8-module.ico</file>
+        <file>res/globstyle.qss</file>
+	<file>res/sw-bandplan.xml</file>
+    </qresource>
+</RCC>

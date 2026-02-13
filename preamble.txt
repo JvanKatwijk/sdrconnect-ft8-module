@@ -1,0 +1,3 @@
+Version 0.9 of the SDRconnect module for ft8
+
+
