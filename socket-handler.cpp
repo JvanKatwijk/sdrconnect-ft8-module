@@ -89,7 +89,7 @@ int16_t *p	= (int16_t *)(m. data ());
 	   return;
 	if (_I_Buffer -> GetRingBufferWriteAvailable () < m. size () / 4)
 	   return;
-	_I_Buffer -> putDataIntoBuffer (&(p [1]), m. size () / 4 - 1);
+	_I_Buffer -> putDataIntoBuffer (&(p [1]), (m. size ()  - 1) / 4);
 	emit binDataAvailable ();
 }
 

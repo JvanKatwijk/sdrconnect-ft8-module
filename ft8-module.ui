@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>526</width>
-    <height>471</height>
+    <width>573</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -87,44 +87,61 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="freqSave">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Touching this button adds the currently selected centerfrequency to the presets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>save</string>
+          </property>
+         </widget>
+        </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="freqSave">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Touching this button adds the currently selected centerfrequency to the presets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>frequency save</string>
-        </property>
-       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QSpinBox" name="iterationSelector">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of iterations done by the software to extract as much as possible messages is selected here. Obviously increasing the selected value will add processing effort to the decoding process.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <widget class="QPushButton" name="scanButton">
+          <property name="text">
+           <string>scan</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="spectrumWidth_selector">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selected subband.&lt;/p&gt;&lt;p&gt;The input to the ft8-module has a bandwidth of 48K, which is initially filtered to a width of 12 KHz. Searching for FT8 messages is in a small range around the center frequency.&lt;/p&gt;&lt;p&gt;The default value is 4000 Hz.&lt;/p&gt;&lt;p&gt;A band filter - with the bandwidth selected here - is applied to the incoming data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="maximum">
-           <number>5500</number>
-          </property>
-          <property name="singleStep">
-           <number>100</number>
+         <widget class="QSpinBox" name="periodSelector">
+          <property name="minimum">
+           <number>1</number>
           </property>
           <property name="value">
-           <number>1000</number>
+           <number>1</number>
           </property>
          </widget>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="iterationSelector">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of iterations done by the software to extract as much as possible messages is selected here. Obviously increasing the selected value will add processing effort to the decoding process.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spectrumWidth_selector">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selected subband.&lt;/p&gt;&lt;p&gt;The input to the ft8-module has a bandwidth of 48K, which is initially filtered to a width of 12 KHz. Searching for FT8 messages is in a small range around the center frequency.&lt;/p&gt;&lt;p&gt;The default value is 4000 Hz.&lt;/p&gt;&lt;p&gt;A band filter - with the bandwidth selected here - is applied to the incoming data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="maximum">
+         <number>5500</number>
+        </property>
+        <property name="singleStep">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>1000</number>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QComboBox" name="cq_selector">
@@ -212,7 +229,7 @@
         <item>
          <widget class="QLabel" name="connectionLabel">
           <property name="text">
-           <string>not conected</string>
+           <string>not connected</string>
           </property>
          </widget>
         </item>
@@ -259,8 +276,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>372</width>
-           <height>389</height>
+           <width>365</width>
+           <height>395</height>
           </rect>
          </property>
         </widget>

@@ -22,13 +22,21 @@ ft8-module is a separate program dedicated to decoding FT8 messages
 transmitted in the various radio amateur bands for use with SDRConnect
 as front end
 
-The program is written in C++ and uses Qt (version 6) and
-qwt (6.3) for the GUI and websocket handling.
+The program is written in C++ and uses Qt (version 6)  for the GUI and websocket handling.
 
 To ease use, precompiled versions (a Windows installer and an AppImage
 for x64 based Linux boxes) are available.
 
 For generating an executable, see the relevant section of this README
+
+------------------------------------------------------------------------
+New feature
+-------------------------------------------------------------------------
+
+A simple **scanning** function is added. Touching the buttonlabeled **scan**
+shows (or hides) a spinbox, a spinbox used for setting the time
+spent per channel.
+The scan runs over the subsequent preset elements.
 
 --------------------------------------------------------------------------
 

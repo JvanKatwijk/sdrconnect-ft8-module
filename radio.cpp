@@ -123,6 +123,14 @@ uint32_t freqTable [] =
 	         this, &RadioInterface::handle_pskReporterButton);
 	connect (filesaveButton, &QPushButton::clicked,
 	         this, &RadioInterface::handle_filesaveButton);
+	connect (&theTimer, &QTimer::timeout,
+	         this, &RadioInterface::handle_timer);
+	connect	(scanButton, &QPushButton::clicked,
+	         this, &RadioInterface::handle_scanButton);
+	connect (periodSelector, &QSpinBox::valueChanged,
+	         this, &RadioInterface::handle_periodSelector);
+
+	periodSelector	-> hide ();
 	theWriter		= nullptr;
 	filePointer. store (nullptr);
 	delayCount		= 0;
@@ -193,7 +201,8 @@ void	RadioInterface::handle_connect	() {
 	settings	-> endGroup	();
 	settings	-> sync ();
 	enableButtons ();
-	setFrequency (KHz (val));
+ 	int Freq = thePresets. setFrequency (val);
+	setFrequency (Freq);
 }
 //
 //	disconnect is called when - at start up - no connection
@@ -541,5 +550,26 @@ void	RadioInterface::enableButtons	() {
 	spectrumWidth_selector	-> setEnabled (true);
 	presetButton	-> setEnabled (true);
 	filesaveButton	-> setEnabled (true);
+}
+
+void	RadioInterface::handle_timer	() {
+	setFrequency (thePresets. nextFrequency ());
+}
+
+void	RadioInterface::handle_scanButton	() {
+	if (periodSelector -> isVisible ()) {	
+	   periodSelector -> setValue (1);
+	   periodSelector	-> hide ();
+	   theTimer. stop ();
+	}
+	else {
+	   periodSelector -> show ();
+	   theTimer. start (1 * 60 * 1000);
+	}
+}
+
+void	RadioInterface::handle_periodSelector	(int v) {
+	theTimer. stop ();
+	theTimer. start (v * 60 * 1000);
 }
 

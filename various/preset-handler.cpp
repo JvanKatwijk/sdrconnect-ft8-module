@@ -4,20 +4,20 @@
  *    Jan van Katwijk (J.vanKatwijk@gmail.com)
  *    Lazy Chair Computing
  *
- *    This file is part of the qt-ft8 decoder
+ *    This file is part of the ft8plugin for SDRconnect
  *
- *    qt-ft8 decoder is free software; you can redistribute it and/or modify
+ *    ft8 plugin decoder is free software; you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
  *    the Free Software Foundation; either version 2 of the License, or
  *    (at your option) any later version.
  *
- *    qt-ft8 decoder is distributed in the hope that it will be useful,
+ *    ft8 plugin decoder is distributed in the hope that it will be useful,
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
  *    You should have received a copy of the GNU General Public License
- *    along with qt-ft8 decoder; if not, write to the Free Software
+ *    along with ft8 plugin; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 //
@@ -70,6 +70,7 @@ uint32_t defaultFreqs [] =
 	      presetList. append (QString::number (defaultFreqs [i]));
 	displayList. setStringList (presetList);
 	this	-> setModel (&displayList);
+	currentSelect	= 0;
 }
 
 	presetHandler::~presetHandler   () {
@@ -137,6 +138,7 @@ void	presetHandler::clearScanList () {
 void	presetHandler::selectElement (QModelIndex ind) {
 QString selectedElement = displayList. data (ind, Qt::DisplayRole). toString ();
 	handle_preset (selectedElement);
+	currentSelect = ind. row ();
 }
 
 void	presetHandler::removeElement (QModelIndex ind) {
@@ -150,3 +152,32 @@ QString selectedElement = displayList. data (ind, Qt::DisplayRole). toString ();
 	   }
 	}
 }
+
+int	presetHandler::setFrequency	(int freq) {
+	for (int i = 0; i < presetList. size (); i ++) {
+	   if (presetList. at (i) == QString::number (freq)) {
+	      currentSelect = i;
+	      return freq * 1000;
+	   }
+	}
+	currentSelect = 0;
+	bool b;
+        int f = presetList. at (currentSelect). toInt (&b);
+        if (b)
+           return f * 1000;
+        return 0;
+}
+	
+	
+	
+int	presetHandler::nextFrequency	() {
+	currentSelect = (currentSelect + 1) % presetList. size ();
+	bool b;
+	int freq = presetList. at (currentSelect). toInt (&b);
+	if (b)
+	   return freq * 1000;
+	return 0;
+}
+
+
+	

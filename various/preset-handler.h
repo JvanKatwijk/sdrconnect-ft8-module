@@ -38,6 +38,8 @@ public:
 		~presetHandler	();
 	void	addElement	(int);
 	void	clearScanList	();
+	int	setFrequency	(int);
+	int	nextFrequency	();
 public slots:
 	void	selectElement	(QModelIndex);
 	void	removeElement	(QModelIndex);
@@ -48,6 +50,7 @@ private:
 	QStringListModel	displayList;
 	RadioInterface	*radio;
 	QString		fileName;
+	int		currentSelect;
 };
 
 

@@ -92,6 +92,8 @@ private:
 	std::atomic<FILE *> filePointer;
 	void		enableButtons		();
 	void		disableButtons		();
+
+	QTimer		theTimer;
 public	slots:
 	void		printLine		(const QString &,
 	                                         int, int,
@@ -116,6 +118,9 @@ private slots:
 	void		handle_pskReporterButton	();
 	void		set_spectrumWidth	(int);
 	void		handle_presetButton	();
+	void		handle_timer		();
+	void		handle_scanButton	();
+	void		handle_periodSelector	(int);
 public slots:
 	void		setFrequency		(int32_t);
 	void		sampleHandler		(int amount);
